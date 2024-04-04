@@ -1,0 +1,86 @@
+version: '3'
+
+#Services
+services:
+  database:
+    image: postgres
+    container_name: database
+    environment:
+      - POSTGRES_DB=${DB_NAME}
+      - POSTGRES_USER=${DB_USERNAME}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+    restart: unless-stopped
+
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          "pg_isready -d $${POSTGRES_DB} -U $${POSTGRES_USER}"
+        ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  broker:
+    container_name: broker
+    build:
+      context: ./broker
+      dockerfile: Dockerfile
+      args:
+        DB_NAME: ${DB_NAME}
+        DB_USERNAME: ${DB_USERNAME}
+        DB_PASSWORD: ${DB_PASSWORD}
+        DB_DIALECT: 'postgres'
+        DB_HOST: database
+    restart: unless-stopped
+    ports:
+      - 3000:3000
+    depends_on:
+      database:
+        condition: service_healthy
+
+  ticket:
+    container_name: ticket
+    build:
+      context: ./ticket_seller
+      dockerfile: Dockerfile
+      args:
+        DB_NAME: ${DB_NAME}
+        DB_USERNAME: ${DB_USERNAME}
+        DB_PASSWORD: ${DB_PASSWORD}
+        DB_DIALECT: 'postgres'
+        DB_HOST: database
+    restart: unless-stopped
+    ports:
+      - 8000:8000
+
+    depends_on:
+      database:
+        condition: service_healthy
+
+  redis:
+    image: redis:alpine
+    container_name: redis
+    restart: unless-stopped
+
+  workers_manager:
+    container_name: workers_manager
+    build: ./workers/producers
+    restart: unless-stopped
+    environment:
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+    depends_on:
+      - redis
+    expose:
+      - 3002
+
+  worker:
+    build: ./workers/consumers
+    restart: unless-stopped
+    environment:
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+    depends_on:
+      - redis
+      - workers_manager

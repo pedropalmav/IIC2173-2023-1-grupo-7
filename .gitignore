@@ -1,0 +1,8 @@
+node_modules
+/my-pdf-converter/node_modules
+.DS_Store
+.env
+.terraform/
+terraform.tfstate
+terraform.tfstate.backup
+deployment.tfplan

@@ -1,0 +1,17 @@
+org: jtconcha
+app: my-pdf-converter
+service: my-pdf-converter
+
+provider:
+  name: aws
+  runtime: nodejs14.x
+  region: us-east-2
+
+functions:
+  convertToPdf:
+    handler: handler.convertToPdf
+    events:
+      - http:
+          path: convert
+          method: post
+

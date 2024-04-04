@@ -1,0 +1,74 @@
+version: '3'
+
+#Services
+services:
+  database:
+    image: postgres
+    container_name: database
+    environment:
+      - POSTGRES_DB=${DB_NAME}
+      - POSTGRES_USER=${DB_USERNAME}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+    restart: unless-stopped
+
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          "pg_isready -d $${POSTGRES_DB} -U $${POSTGRES_USER}"
+        ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  broker:
+    image: 234329232283.dkr.ecr.us-east-2.amazonaws.com/broker:latest
+    container_name: broker
+    restart: unless-stopped
+    ports:
+      - 3000:3000
+    depends_on:
+      database:
+        condition: service_healthy
+    env_file:
+      - ./broker/.env
+
+  ticket:
+    image: 234329232283.dkr.ecr.us-east-2.amazonaws.com/ticketseller:latest
+    container_name: ticket
+    restart: unless-stopped
+    ports:
+      - 8000:8000
+
+    depends_on:
+      database:
+        condition: service_healthy
+    env_file:
+      - ./ticket_seller/.env
+
+  redis:
+    image: redis:alpine
+    container_name: redis
+    restart: unless-stopped
+
+  workers_manager:
+    image: 234329232283.dkr.ecr.us-east-2.amazonaws.com/workers_manager:latest
+    container_name: workers_manager
+    restart: unless-stopped
+    environment:
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+    depends_on:
+      - redis
+    expose:
+      - 3002
+
+  worker:
+    image: 234329232283.dkr.ecr.us-east-2.amazonaws.com/worker:latest
+    restart: unless-stopped
+    environment:
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+    depends_on:
+      - redis
+      - workers_manager

@@ -1,0 +1,472 @@
+{
+	"info": {
+		"_postman_id": "f6876bfd-9146-4519-939d-f17d228891b0",
+		"name": "api.ticketseller.lat",
+		"description": "### Documentación de las rutas de la API api.ticketseller.lat:",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27662610"
+	},
+	"item": [
+		{
+			"name": "https://api.ticketseller.lat/events",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.ticketseller.lat/events",
+					"protocol": "https",
+					"host": [
+						"api",
+						"ticketseller",
+						"lat"
+					],
+					"path": [
+						"events"
+					]
+				},
+				"description": "Permite ver los eventos que existen, los cuales se encuentran en la base de datos"
+			},
+			"response": []
+		},
+		{
+			"name": "https://api.ticketseller.lat/buy",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImhxN2VyTUlFS1A3ZUpkSnI1OUlpNyJ9.eyJpc3MiOiJodHRwczovL2Rldi16Z2EzMGFzandwdjRydHQxLnVzLmF1dGgwLmNvbS8iLCJzdWIiOiJtUXlKWVVQWEVlbHBUcElnZTM5Z1UzRjJBSHJ1UVBQQUBjbGllbnRzIiwiYXVkIjoiaHR0cHM6Ly9kZXYtemdhMzBhc2p3cHY0cnR0MS51cy5hdXRoMC5jb20vYXBpL3YyLyIsImlhdCI6MTY4NTIyNjk3MiwiZXhwIjoxNjg1MzEzMzcyLCJhenAiOiJtUXlKWVVQWEVlbHBUcElnZTM5Z1UzRjJBSHJ1UVBQQSIsImd0eSI6ImNsaWVudC1jcmVkZW50aWFscyJ9.irAkpPiwUIpcAki-8ZVMBtRo1ml1pMS3ieUm6zYbzxFTi6aJ6hPfaB1e4KnTMWkf-_SiBJV_J5PxuIXWLxwbRRIankZF3Zblyq54vNFwggrZNVOEnoUJjrigl7435mZUJqUS6eiMDDqK7nQbww1sO5cu_vx2isEDVxJe3m5aB2mlxfquiCl1Xa4Lz_ydz-RQtde-gHGqYahlRYjDlv1IyNuQZ0xYOACFNzRPNAW8CQePP4bZLOfnO3HK_uqElA_3iUVqWdbFA_WlSPYTVY6VibutNKHDbe50-SGAoC43hO5skszmG63HJfw8K0RDB-UajAC70t74S0weTi9qyiCnDA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://api.ticketseller.lat/buy?event_id=01ecc911-4ac0-492f-bf20-4796e68b76c8&quantity=5&user_id=auth0%7C6445f4f076641cef1c0ceddd",
+					"protocol": "https",
+					"host": [
+						"api",
+						"ticketseller",
+						"lat"
+					],
+					"path": [
+						"buy"
+					],
+					"query": [
+						{
+							"key": "event_id",
+							"value": "01ecc911-4ac0-492f-bf20-4796e68b76c8",
+							"description": "id del evento"
+						},
+						{
+							"key": "quantity",
+							"value": "5",
+							"description": "cantidad de tickets a comprar"
+						},
+						{
+							"key": "user_id",
+							"value": "auth0%7C6445f4f076641cef1c0ceddd",
+							"description": "id del usuario actual"
+						}
+					]
+				},
+				"description": "Permite hacer una petición de compra del evento con la cantidad tickets que se especifican. Este presenta 3 query params:\n\nevent_id: Indica el id del evento al cual se quiere comprar un ticket\n\nquantity: Indica la cantidad de tickets que se quieren comprar\n\nuser_id: Indica el id del usuario que hace la compra"
+			},
+			"response": []
+		},
+		{
+			"name": "https://api.ticketseller.lat/requests/:userid",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImhxN2VyTUlFS1A3ZUpkSnI1OUlpNyJ9.eyJpc3MiOiJodHRwczovL2Rldi16Z2EzMGFzandwdjRydHQxLnVzLmF1dGgwLmNvbS8iLCJzdWIiOiJtUXlKWVVQWEVlbHBUcElnZTM5Z1UzRjJBSHJ1UVBQQUBjbGllbnRzIiwiYXVkIjoiaHR0cHM6Ly9kZXYtemdhMzBhc2p3cHY0cnR0MS51cy5hdXRoMC5jb20vYXBpL3YyLyIsImlhdCI6MTY4NTIyNjk3MiwiZXhwIjoxNjg1MzEzMzcyLCJhenAiOiJtUXlKWVVQWEVlbHBUcElnZTM5Z1UzRjJBSHJ1UVBQQSIsImd0eSI6ImNsaWVudC1jcmVkZW50aWFscyJ9.irAkpPiwUIpcAki-8ZVMBtRo1ml1pMS3ieUm6zYbzxFTi6aJ6hPfaB1e4KnTMWkf-_SiBJV_J5PxuIXWLxwbRRIankZF3Zblyq54vNFwggrZNVOEnoUJjrigl7435mZUJqUS6eiMDDqK7nQbww1sO5cu_vx2isEDVxJe3m5aB2mlxfquiCl1Xa4Lz_ydz-RQtde-gHGqYahlRYjDlv1IyNuQZ0xYOACFNzRPNAW8CQePP4bZLOfnO3HK_uqElA_3iUVqWdbFA_WlSPYTVY6VibutNKHDbe50-SGAoC43hO5skszmG63HJfw8K0RDB-UajAC70t74S0weTi9qyiCnDA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.ticketseller.lat/requests/6445e365697437fd9a980725",
+					"protocol": "https",
+					"host": [
+						"api",
+						"ticketseller",
+						"lat"
+					],
+					"path": [
+						"requests",
+						"6445e365697437fd9a980725"
+					]
+				},
+				"description": "Permite ver las solicitudes de compra que ha hecho el usuario con id userid"
+			},
+			"response": []
+		},
+		{
+			"name": "https://api.ticketseller.lat/Production/check_balance",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImhxN2VyTUlFS1A3ZUpkSnI1OUlpNyJ9.eyJpc3MiOiJodHRwczovL2Rldi16Z2EzMGFzandwdjRydHQxLnVzLmF1dGgwLmNvbS8iLCJzdWIiOiJtUXlKWVVQWEVlbHBUcElnZTM5Z1UzRjJBSHJ1UVBQQUBjbGllbnRzIiwiYXVkIjoiaHR0cHM6Ly9kZXYtemdhMzBhc2p3cHY0cnR0MS51cy5hdXRoMC5jb20vYXBpL3YyLyIsImlhdCI6MTY4NTIyNjk3MiwiZXhwIjoxNjg1MzEzMzcyLCJhenAiOiJtUXlKWVVQWEVlbHBUcElnZTM5Z1UzRjJBSHJ1UVBQQSIsImd0eSI6ImNsaWVudC1jcmVkZW50aWFscyJ9.irAkpPiwUIpcAki-8ZVMBtRo1ml1pMS3ieUm6zYbzxFTi6aJ6hPfaB1e4KnTMWkf-_SiBJV_J5PxuIXWLxwbRRIankZF3Zblyq54vNFwggrZNVOEnoUJjrigl7435mZUJqUS6eiMDDqK7nQbww1sO5cu_vx2isEDVxJe3m5aB2mlxfquiCl1Xa4Lz_ydz-RQtde-gHGqYahlRYjDlv1IyNuQZ0xYOACFNzRPNAW8CQePP4bZLOfnO3HK_uqElA_3iUVqWdbFA_WlSPYTVY6VibutNKHDbe50-SGAoC43hO5skszmG63HJfw8K0RDB-UajAC70t74S0weTi9qyiCnDA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.ticketseller.lat/check_balance?user_id=6445e365697437fd9a980725",
+					"protocol": "https",
+					"host": [
+						"api",
+						"ticketseller",
+						"lat"
+					],
+					"path": [
+						"check_balance"
+					],
+					"query": [
+						{
+							"key": "user_id",
+							"value": "6445e365697437fd9a980725"
+						}
+					]
+				},
+				"description": "Lo que hace es un get para que el usuario de user_id pueda chequear cuant odinero tiene en su billetera."
+			},
+			"response": []
+		},
+		{
+			"name": "https://api.ticketseller.lat/add_money",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImhxN2VyTUlFS1A3ZUpkSnI1OUlpNyJ9.eyJpc3MiOiJodHRwczovL2Rldi16Z2EzMGFzandwdjRydHQxLnVzLmF1dGgwLmNvbS8iLCJzdWIiOiJtUXlKWVVQWEVlbHBUcElnZTM5Z1UzRjJBSHJ1UVBQQUBjbGllbnRzIiwiYXVkIjoiaHR0cHM6Ly9kZXYtemdhMzBhc2p3cHY0cnR0MS51cy5hdXRoMC5jb20vYXBpL3YyLyIsImlhdCI6MTY4NTI0MTIwMSwiZXhwIjoxNjg1MzI3NjAxLCJhenAiOiJtUXlKWVVQWEVlbHBUcElnZTM5Z1UzRjJBSHJ1UVBQQSIsImd0eSI6ImNsaWVudC1jcmVkZW50aWFscyJ9.Ok8tuY9gopq4-nCbzUVGN_tdyXLvRrVNzmSVWiH34EeVMmHsLHDTK1BynZIk-9swY3JdW7XvifC-p25Q9cBNXrc8OzTuwhalqRu-6oy8r0IEEpnUDkvVMOh2CFK0xiprX1FocqAGO9LD8DBS5Wra3K_EHl3RSfQmYP-vk3JEBeYsheQLr6A7yAkQZcTHdQVv-uwWozlyxrv7JpHEDCbN9E5LrjxpRkuPFKmqwdNk_viWgVAC8vGJH5Rj73KOVDk8hqTDvZUAu83ryRv5xllRhFbgPQgLZYpvQM5Oii7TWVYE3h_oRR8XhwJ6xtO5R2wGJNlya2-zm1w0I98_TnCIag",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"user_id\": \"auth0|6445e365697437fd9a980725\",\r\n    \"money\": 1238678123\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api.ticketseller.lat/add_money",
+					"protocol": "https",
+					"host": [
+						"api",
+						"ticketseller",
+						"lat"
+					],
+					"path": [
+						"add_money"
+					]
+				},
+				"description": "Se encarga de agregar el dinero correspondiente al usuario de user_id."
+			},
+			"response": []
+		},
+		{
+			"name": "https://api.ticketseller.lat/workers_status",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.ticketseller.lat/workers_status",
+					"protocol": "https",
+					"host": [
+						"api",
+						"ticketseller",
+						"lat"
+					],
+					"path": [
+						"workers_status"
+					]
+				},
+				"description": "Permite saber el estado de los workers"
+			},
+			"response": []
+		},
+		{
+			"name": "https://api.ticketseller.lat/auctions",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImhxN2VyTUlFS1A3ZUpkSnI1OUlpNyJ9.eyJpc3MiOiJodHRwczovL2Rldi16Z2EzMGFzandwdjRydHQxLnVzLmF1dGgwLmNvbS8iLCJzdWIiOiJtUXlKWVVQWEVlbHBUcElnZTM5Z1UzRjJBSHJ1UVBQQUBjbGllbnRzIiwiYXVkIjoiaHR0cHM6Ly9kZXYtemdhMzBhc2p3cHY0cnR0MS51cy5hdXRoMC5jb20vYXBpL3YyLyIsImlhdCI6MTY4NTI0MTIwMSwiZXhwIjoxNjg1MzI3NjAxLCJhenAiOiJtUXlKWVVQWEVlbHBUcElnZTM5Z1UzRjJBSHJ1UVBQQSIsImd0eSI6ImNsaWVudC1jcmVkZW50aWFscyJ9.Ok8tuY9gopq4-nCbzUVGN_tdyXLvRrVNzmSVWiH34EeVMmHsLHDTK1BynZIk-9swY3JdW7XvifC-p25Q9cBNXrc8OzTuwhalqRu-6oy8r0IEEpnUDkvVMOh2CFK0xiprX1FocqAGO9LD8DBS5Wra3K_EHl3RSfQmYP-vk3JEBeYsheQLr6A7yAkQZcTHdQVv-uwWozlyxrv7JpHEDCbN9E5LrjxpRkuPFKmqwdNk_viWgVAC8vGJH5Rj73KOVDk8hqTDvZUAu83ryRv5xllRhFbgPQgLZYpvQM5Oii7TWVYE3h_oRR8XhwJ6xtO5R2wGJNlya2-zm1w0I98_TnCIag",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.ticketseller.lat/auctions",
+					"protocol": "https",
+					"host": [
+						"api",
+						"ticketseller",
+						"lat"
+					],
+					"path": [
+						"auctions"
+					]
+				},
+				"description": "Retorna las subastas que se han publicado y los proposal que se han recibido como grupo"
+			},
+			"response": []
+		},
+		{
+			"name": "https://api.ticketseller.lat/auctions",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImhxN2VyTUlFS1A3ZUpkSnI1OUlpNyJ9.eyJpc3MiOiJodHRwczovL2Rldi16Z2EzMGFzandwdjRydHQxLnVzLmF1dGgwLmNvbS8iLCJzdWIiOiJtUXlKWVVQWEVlbHBUcElnZTM5Z1UzRjJBSHJ1UVBQQUBjbGllbnRzIiwiYXVkIjoiaHR0cHM6Ly9kZXYtemdhMzBhc2p3cHY0cnR0MS51cy5hdXRoMC5jb20vYXBpL3YyLyIsImlhdCI6MTY4NTI0MTIwMSwiZXhwIjoxNjg1MzI3NjAxLCJhenAiOiJtUXlKWVVQWEVlbHBUcElnZTM5Z1UzRjJBSHJ1UVBQQSIsImd0eSI6ImNsaWVudC1jcmVkZW50aWFscyJ9.Ok8tuY9gopq4-nCbzUVGN_tdyXLvRrVNzmSVWiH34EeVMmHsLHDTK1BynZIk-9swY3JdW7XvifC-p25Q9cBNXrc8OzTuwhalqRu-6oy8r0IEEpnUDkvVMOh2CFK0xiprX1FocqAGO9LD8DBS5Wra3K_EHl3RSfQmYP-vk3JEBeYsheQLr6A7yAkQZcTHdQVv-uwWozlyxrv7JpHEDCbN9E5LrjxpRkuPFKmqwdNk_viWgVAC8vGJH5Rj73KOVDk8hqTDvZUAu83ryRv5xllRhFbgPQgLZYpvQM5Oii7TWVYE3h_oRR8XhwJ6xtO5R2wGJNlya2-zm1w0I98_TnCIag",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"event_id\": \"59b9146b-9a9b-43c4-8058-54b510ff4fa7\",\r\n    \"quantity\": 3\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api.ticketseller.lat/auctions",
+					"protocol": "https",
+					"host": [
+						"api",
+						"ticketseller",
+						"lat"
+					],
+					"path": [
+						"auctions"
+					]
+				},
+				"description": "Publica una nueva subasta"
+			},
+			"response": []
+		},
+		{
+			"name": "https://api.ticketseller.lat/auctions/proposals",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.ticketseller.lat/auctions/proposals",
+					"protocol": "https",
+					"host": [
+						"api",
+						"ticketseller",
+						"lat"
+					],
+					"path": [
+						"auctions",
+						"proposals"
+					]
+				},
+				"description": "Retorna las proposals que ha enviado el grupo"
+			},
+			"response": []
+		},
+		{
+			"name": "https://api.ticketseller.lat/auctions/proposals",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImhxN2VyTUlFS1A3ZUpkSnI1OUlpNyJ9.eyJpc3MiOiJodHRwczovL2Rldi16Z2EzMGFzandwdjRydHQxLnVzLmF1dGgwLmNvbS8iLCJzdWIiOiJtUXlKWVVQWEVlbHBUcElnZTM5Z1UzRjJBSHJ1UVBQQUBjbGllbnRzIiwiYXVkIjoiaHR0cHM6Ly90aWNrZXRzZWxsZXIubGF0IiwiaWF0IjoxNjg3OTE4Njk3LCJleHAiOjE2ODgwMDUwOTcsImF6cCI6Im1ReUpZVVBYRWVscFRwSWdlMzlnVTNGMkFIcnVRUFBBIiwiZ3R5IjoiY2xpZW50LWNyZWRlbnRpYWxzIiwicGVybWlzc2lvbnMiOltdfQ.z9BhFduBd7KWr7UKwYky6Qp4WO4oc_x3hHo7hO1mdE7VRY5WzTnOx29fDEsPd43RuD6KYr7DNsUK_ehMLmDM3hTasJRufZjgDslYPBMR1aqDneD49DSwanLnmPBJ4KFXeUs6Rjs5MEATgbtLo_PiHNopcCtkF_HzRMvtHSSbDc5R_FIDu5eGiSYx45DxjIycMwmDUmlVp5cB7S5kVxPAdPAJMLuvnmQWXX-amrzm32q5UYIri7zZk2WhvzYVYvJADs2LytCz1LdOkUSLukpQSBv7_Bj9uA3YSJbJpcm3Nn2NtnjJXJXvL-J4yWwkES1-hXBwI4Csv4pKt7ha4LkCZw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"auction_id\": \"106bc1fe-3b16-4ead-96f9-66511668f5e4\",\r\n    \"quantity\": 3\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api.ticketseller.lat/auctions/proposals",
+					"protocol": "https",
+					"host": [
+						"api",
+						"ticketseller",
+						"lat"
+					],
+					"path": [
+						"auctions",
+						"proposals"
+					]
+				},
+				"description": "Retorna las proposals que hemos enviado"
+			},
+			"response": []
+		},
+		{
+			"name": "https://api.ticketseller.lat/auctions/offers",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImhxN2VyTUlFS1A3ZUpkSnI1OUlpNyJ9.eyJpc3MiOiJodHRwczovL2Rldi16Z2EzMGFzandwdjRydHQxLnVzLmF1dGgwLmNvbS8iLCJzdWIiOiJtUXlKWVVQWEVlbHBUcElnZTM5Z1UzRjJBSHJ1UVBQQUBjbGllbnRzIiwiYXVkIjoiaHR0cHM6Ly9kZXYtemdhMzBhc2p3cHY0cnR0MS51cy5hdXRoMC5jb20vYXBpL3YyLyIsImlhdCI6MTY4NTI0MTIwMSwiZXhwIjoxNjg1MzI3NjAxLCJhenAiOiJtUXlKWVVQWEVlbHBUcElnZTM5Z1UzRjJBSHJ1UVBQQSIsImd0eSI6ImNsaWVudC1jcmVkZW50aWFscyJ9.Ok8tuY9gopq4-nCbzUVGN_tdyXLvRrVNzmSVWiH34EeVMmHsLHDTK1BynZIk-9swY3JdW7XvifC-p25Q9cBNXrc8OzTuwhalqRu-6oy8r0IEEpnUDkvVMOh2CFK0xiprX1FocqAGO9LD8DBS5Wra3K_EHl3RSfQmYP-vk3JEBeYsheQLr6A7yAkQZcTHdQVv-uwWozlyxrv7JpHEDCbN9E5LrjxpRkuPFKmqwdNk_viWgVAC8vGJH5Rj73KOVDk8hqTDvZUAu83ryRv5xllRhFbgPQgLZYpvQM5Oii7TWVYE3h_oRR8XhwJ6xtO5R2wGJNlya2-zm1w0I98_TnCIag",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.ticketseller.lat/auctions/offers",
+					"protocol": "https",
+					"host": [
+						"api",
+						"ticketseller",
+						"lat"
+					],
+					"path": [
+						"auctions",
+						"offers"
+					]
+				},
+				"description": "Retorna las auctions publicadas por otros grupos y las proposal a esa subasta"
+			},
+			"response": []
+		},
+		{
+			"name": "https://api.ticketseller.lat/auctions/accept",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImhxN2VyTUlFS1A3ZUpkSnI1OUlpNyJ9.eyJpc3MiOiJodHRwczovL2Rldi16Z2EzMGFzandwdjRydHQxLnVzLmF1dGgwLmNvbS8iLCJzdWIiOiJtUXlKWVVQWEVlbHBUcElnZTM5Z1UzRjJBSHJ1UVBQQUBjbGllbnRzIiwiYXVkIjoiaHR0cHM6Ly90aWNrZXRzZWxsZXIubGF0IiwiaWF0IjoxNjg3OTE4Njk3LCJleHAiOjE2ODgwMDUwOTcsImF6cCI6Im1ReUpZVVBYRWVscFRwSWdlMzlnVTNGMkFIcnVRUFBBIiwiZ3R5IjoiY2xpZW50LWNyZWRlbnRpYWxzIiwicGVybWlzc2lvbnMiOltdfQ.z9BhFduBd7KWr7UKwYky6Qp4WO4oc_x3hHo7hO1mdE7VRY5WzTnOx29fDEsPd43RuD6KYr7DNsUK_ehMLmDM3hTasJRufZjgDslYPBMR1aqDneD49DSwanLnmPBJ4KFXeUs6Rjs5MEATgbtLo_PiHNopcCtkF_HzRMvtHSSbDc5R_FIDu5eGiSYx45DxjIycMwmDUmlVp5cB7S5kVxPAdPAJMLuvnmQWXX-amrzm32q5UYIri7zZk2WhvzYVYvJADs2LytCz1LdOkUSLukpQSBv7_Bj9uA3YSJbJpcm3Nn2NtnjJXJXvL-J4yWwkES1-hXBwI4Csv4pKt7ha4LkCZw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"auction_id\": \"106bc1fe-3b16-4ead-96f9-66511668f5e4\",\r\n    \"proposal_id\": \"59b9146b-9a9b-43c4-8058-54b510ff4fa7\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api.ticketseller.lat/auctions/accept",
+					"protocol": "https",
+					"host": [
+						"api",
+						"ticketseller",
+						"lat"
+					],
+					"path": [
+						"auctions",
+						"accept"
+					]
+				},
+				"description": "Acepta proposal"
+			},
+			"response": []
+		},
+		{
+			"name": "https://api.ticketseller.lat/auctions/reject",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImhxN2VyTUlFS1A3ZUpkSnI1OUlpNyJ9.eyJpc3MiOiJodHRwczovL2Rldi16Z2EzMGFzandwdjRydHQxLnVzLmF1dGgwLmNvbS8iLCJzdWIiOiJtUXlKWVVQWEVlbHBUcElnZTM5Z1UzRjJBSHJ1UVBQQUBjbGllbnRzIiwiYXVkIjoiaHR0cHM6Ly90aWNrZXRzZWxsZXIubGF0IiwiaWF0IjoxNjg3OTE4Njk3LCJleHAiOjE2ODgwMDUwOTcsImF6cCI6Im1ReUpZVVBYRWVscFRwSWdlMzlnVTNGMkFIcnVRUFBBIiwiZ3R5IjoiY2xpZW50LWNyZWRlbnRpYWxzIiwicGVybWlzc2lvbnMiOltdfQ.z9BhFduBd7KWr7UKwYky6Qp4WO4oc_x3hHo7hO1mdE7VRY5WzTnOx29fDEsPd43RuD6KYr7DNsUK_ehMLmDM3hTasJRufZjgDslYPBMR1aqDneD49DSwanLnmPBJ4KFXeUs6Rjs5MEATgbtLo_PiHNopcCtkF_HzRMvtHSSbDc5R_FIDu5eGiSYx45DxjIycMwmDUmlVp5cB7S5kVxPAdPAJMLuvnmQWXX-amrzm32q5UYIri7zZk2WhvzYVYvJADs2LytCz1LdOkUSLukpQSBv7_Bj9uA3YSJbJpcm3Nn2NtnjJXJXvL-J4yWwkES1-hXBwI4Csv4pKt7ha4LkCZw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"auction_id\": \"106bc1fe-3b16-4ead-96f9-66511668f5e4\",\r\n    \"proposal_id\": \"59b9146b-9a9b-43c4-8058-54b510ff4fa7\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api.ticketseller.lat/auctions/reject",
+					"protocol": "https",
+					"host": [
+						"api",
+						"ticketseller",
+						"lat"
+					],
+					"path": [
+						"auctions",
+						"reject"
+					]
+				},
+				"description": "Rechaza proposal"
+			},
+			"response": []
+		}
+	]
+}

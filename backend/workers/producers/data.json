@@ -1,0 +1,25 @@
+{
+    "deposit_token": "cd843a8e-b966-4196-98d7-c4eba9d72f9d",
+    "challenges": [
+        {
+            "challenge_id": 1,
+            "challenge_hash": "353b9e4492471b6363943db42961eb3d0a66a90a0d20836d6a02fed0230ac7e0"
+        },
+        {
+            "challenge_id": 2,
+            "challenge_hash": "f7612b9802901c5112fb57096d2118ba73f3ae8099a7daf39a914574e7156579"
+        },
+        {
+            "challenge_id": 3,
+            "challenge_hash": "3f1778524dde3ed63c378bfc22240ef441f0cdf2f7e7d63248e386ba2d405fbe"
+        },
+        {
+            "challenge_id": 4,
+            "challenge_hash": "c048eba8c8e922644a79215051c929f8daa967258e66f6ff2a92bdb1d4c63930"
+        },
+        {
+            "challenge_id": 5,
+            "challenge_hash": "81109164d82a08935aec12adc070dfcfd6b6650f95424ee392e2ffa1f5314bc1"
+        }
+    ]
+}
